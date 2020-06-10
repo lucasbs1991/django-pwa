@@ -47,7 +47,7 @@
         }).then(function (registration) {
             // Registration was successful
             {% if PWA_APP_DEBUG_MODE %}
-            console.log(' django-pwa: ServiceWorker registration successful with scope: ', registration.scope);
+            console.log('pwa: ServiceWorker registration successful with scope: ', registration.scope);
             {% endif %}
         }, function (err) {
             // registration failed :(

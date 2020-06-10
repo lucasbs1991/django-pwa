@@ -1,5 +1,5 @@
 <!-- Path to manifest.json -->
-<link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="/app/manifest.json">
 
 <!-- Add to homescreen for Chrome on Android -->
 <meta name="mobile-web-app-capable" content="yes">
@@ -42,12 +42,12 @@
 <script type="text/javascript">
     // Initialize the service worker
     if ('serviceWorker' in navigator && window.location.pathname.includes('app')) {
-        navigator.serviceWorker.register('/serviceworker.js', {
+        navigator.serviceWorker.register('/app/serviceworker.js', {
             scope: '{{ PWA_APP_SCOPE }}'
         }).then(function (registration) {
             // Registration was successful
             {% if PWA_APP_DEBUG_MODE %}
-            console.log('pwa: ServiceWorker registration successful with scope: ', registration.scope);
+            console.log('django-pwa: ServiceWorker registration successful with scope: ', registration.scope);
             {% endif %}
         }, function (err) {
             // registration failed :(

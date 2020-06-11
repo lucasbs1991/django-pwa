@@ -40,20 +40,27 @@
 {% endwith %}
 
 <script type="text/javascript">
-    // Initialize the service worker
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/app/serviceworker.js', {
-            scope: '{{ PWA_APP_SCOPE }}'
-        }).then(function (registration) {
-            // Registration was successful
-            {% if PWA_APP_DEBUG_MODE %}
-            console.log('django-pwa: ServiceWorker registration successful with scope: ', registration.scope);
-            {% endif %}
-        }, function (err) {
-            // registration failed :(
-            {% if PWA_APP_DEBUG_MODE %}
-            console.log('django-pwa: ServiceWorker registration failed: ', err);
-            {% endif %}
-        });
+    function swTimeout() {
+        // Initialize the service worker
+        if ('serviceWorker' in navigator && window.location.pathname.includes('app/')) {
+            console.log('register')
+            navigator.serviceWorker.register('/app/serviceworker.js', {
+                scope: '{{ PWA_APP_SCOPE }}'
+            }).then(function (registration) {
+                // Registration was successful
+                {% if PWA_APP_DEBUG_MODE %}
+                console.log('django-pwa: ServiceWorker registration successful with scope: ', registration.scope);
+                {% endif %}
+            }, function (err) {
+                // registration failed :(
+                {% if PWA_APP_DEBUG_MODE %}
+                console.log('django-pwa: ServiceWorker registration failed: ', err);
+                {% endif %}
+            });
+        }
+        else {
+            console.log('not yet')
+            setTimeout(swTimeout, 3000);
+        }
     }
 </script>

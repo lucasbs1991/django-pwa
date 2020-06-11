@@ -25,6 +25,7 @@ var filesToCache = [
 ];
 
 // Cache on install
+console.log(self)
 if(self.location.pathname.includes('app/')) {
     self.addEventListener("install", event => {
         this.skipWaiting();

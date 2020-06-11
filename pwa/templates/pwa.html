@@ -41,7 +41,7 @@
 
 <script type="text/javascript">
     // Initialize the service worker
-    if ('serviceWorker' in navigator && window.location.pathname.includes('app/')) {
+    if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/app/serviceworker.js', {
             scope: '{{ PWA_APP_SCOPE }}'
         }).then(function (registration) {

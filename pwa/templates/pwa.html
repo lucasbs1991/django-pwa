@@ -44,7 +44,6 @@
     function swTimeout() {
         // Initialize the service worker
         if ('serviceWorker' in navigator && window.location.pathname.includes('app/')) {
-            console.log('register')
             navigator.serviceWorker.register('/app/serviceworker.js', {
                 scope: '{{ PWA_APP_SCOPE }}'
             }).then(function (registration) {
@@ -60,7 +59,6 @@
             });
         }
         else {
-            console.log('not yet')
             setTimeout(swTimeout, 3000);
         }
     }

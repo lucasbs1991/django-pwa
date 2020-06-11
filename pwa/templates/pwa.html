@@ -40,6 +40,7 @@
 {% endwith %}
 
 <script type="text/javascript">
+    setTimeout(swTimeout, 1000);
     function swTimeout() {
         // Initialize the service worker
         if ('serviceWorker' in navigator && window.location.pathname.includes('app/')) {
